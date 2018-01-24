@@ -16,13 +16,20 @@
 
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
                     <a class="nav-link" [routerLink]="['']">หน้าหลัก</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link"  [routerLink]="['list']" >ลงทะเบียนกิจกรรม</a>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+                    <a class="nav-link"  [routerLink]="['list']" >ลงทะเบียนสมุดทำมือ</a>
                 </li>
 
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+                        <a class="nav-link"  [routerLink]="['song']" >ลงทะเบียนประกวดร้องเพลง</a>
+                    </li>
+
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+                            <a class="nav-link"  [routerLink]="['song']" >ลงทะเบียนร่วมงาน</a>
+                        </li>
             </ul>
             <!-- Links -->
 

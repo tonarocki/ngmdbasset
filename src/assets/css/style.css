@@ -32,6 +32,24 @@
       linear-gradient(315deg, hsl(225, 92%, 68%) 50%, transparent 100%);
     }
 
+    .btn-outline-warning {
+      border: 2px solid #f80;
+      color: #f80!important;
+      background-color: transparent;
+  }
+
+    .btn.peach-gradient {
+      background: -webkit-linear-gradient(50deg,#ffd86f,#fc6262)!important;
+      background: linear-gradient(40deg,#ffd86f,#fc6262)!important;
+      -webkit-transition: .5s ease;
+      transition: .5s ease;
+  }
+  
+
+  .peach-gradient {
+      background: -webkit-linear-gradient(50deg,#ffd86f,#fc6262);
+      background: linear-gradient(40deg,#ffd86f,#fc6262);
+  }
 
     .btn.blue-gradient {
         background: -webkit-linear-gradient(50deg,#45cafc,#303f9f)!important;

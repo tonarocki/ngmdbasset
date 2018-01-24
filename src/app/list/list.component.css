@@ -5,3 +5,21 @@
   padding-bottom: 1em;
   border-bottom: 1px solid #E4EAEC;
 }
+
+.card-header {
+  padding: .1rem 1.25rem;
+}
+.waves-effect {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 1;
+}
+.btn {
+  font-size: .9rem;
+}
