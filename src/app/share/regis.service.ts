@@ -8,7 +8,7 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class RegisService {
-  urlregisall = 'http://localhost:8000/api/regis';
+  urlregisall = 'http://cmm.snru.ac.th:8000/api/regis';
   urluser = 'http://localhost:3001/user/';
 
   constructor(private http: HttpClient) { }

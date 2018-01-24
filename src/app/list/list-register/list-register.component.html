@@ -1,3 +1,80 @@
-<p>
-  list-register works!
-</p>
+<div class="row mt-5">
+    <div class="container-fluid">
+        <div class="col-md-12 listweek-title">
+            <h2>ลงทะเบียนกิจกรรม {{ regisTitle }}</h2>
+            <h6>ราละเอียด {{ regisDetail }}</h6>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4">
+    <section class="form-elegant">
+        <div class="card">
+
+            <div class="card-body mx-1">
+    <form novalidate #registerForm="ngForm" (ngSubmit)="register(registerForm.value)"  >
+
+       
+        <div class="md-form">
+          <input #stdid="ngModel" class="form-control" ngModel name="stdid" type="text">
+          <label for="stdid">รหัสนักศึกษา</label>
+        </div>
+
+        <div class="md-form">
+          <input #prefix="ngModel" class="form-control" ngModel name="prefix" type="text" >
+          <label for="prefix">นาย/นาง/นางสาว</label>
+        </div>
+
+        <div class="md-form">
+          <input #fname="ngModel" class="form-control" ngModel name="fname" type="text">
+          <label for="fname">ชื่อ</label>
+        </div>
+
+        <div class="md-form">
+          <input #lname="ngModel" class="form-control" ngModel name="lname" type="text">
+          <label for="lname">นามสกุล</label>
+        </div>
+
+        <div class="md-form">
+          <input #email="ngModel" class="form-control" ngModel name="email" type="text">
+          <label for="email">อีเมลล์</label>
+        </div>
+        <div class="md-form">
+          <input #tel="ngModel" class="form-control" ngModel name="tel" type="text" >
+          <label for="tel">เบอร์โทรศัพท์</label>
+        </div>
+        <button type="submit" class="btn aqua-gradient btn-sm" > บันทึก</button>
+
+        <button type="reset" class="btn btn-outline-warning btn-sm" ng-click="clear(registerForm)" > กรอกใหม่</button>
+
+      </form>
+            </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-lg-8">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let list of registeruser">
+                  <th scope="row">{{list.id}}</th>
+                  <td>{{list.fname}}</td>
+                  <td>{{list.lname}}</td>
+                  <td> {{list.tel}} </td>
+                </tr>
+               
+              </tbody>
+          </table>
+    </div>
+
+</div>
