@@ -13,6 +13,7 @@ import {
 import { RegisService } from '../../share/regis.service';
 
 import { Regisdetail } from '../../share/regdetail.model';
+import { Form } from '@angular/forms/src/directives/form_interface';
 @Component({
   selector: 'app-list-register',
   templateUrl: './list-register.component.html',
@@ -29,6 +30,7 @@ export class ListRegisterComponent implements OnInit, OnDestroy {
   registeruser: any;
   agency: any;
   Regdetail: Regisdetail;
+  xx: Form;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +41,7 @@ export class ListRegisterComponent implements OnInit, OnDestroy {
   }
 
   clear(registerForm): void {
+    this.xx = registerForm;
     registerForm = {};
   }
 
@@ -57,7 +60,7 @@ export class ListRegisterComponent implements OnInit, OnDestroy {
           console.log(regdetail);
           this.Regdetail = regdetail;
           if (this.Regdetail.id) {
-            alert('บันทึกข้อมูลเรียบร้อยแล้ว ' + this.Regdetail.id);
+            alert('บันทึกข้อมูล คุณ ' + this.Regdetail.fname + ' เรียบร้อยแล้ว ' + this.Regdetail.id);
             this.list();
           }
         },
