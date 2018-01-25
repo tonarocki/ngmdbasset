@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule  } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxQRCodeModule} from 'ngx-qrcode2';
 
 import { AppComponent } from './app.component';
@@ -15,6 +15,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { RegisService } from './share/regis.service';
+import { SongComponent } from './song/song.component';
+import { SongDetailComponent } from './song/song-detail/song-detail.component';
+import { SongRegisterComponent } from './song/song-register/song-register.component';
+import { RegeventComponent } from './regevent/regevent.component';
+import { RegeventDetailComponent } from './regevent/regevent-detail/regevent-detail.component';
+import { RegeventRegisterComponent } from './regevent/regevent-register/regevent-register.component';
 
 
 @NgModule({
@@ -26,11 +32,18 @@ import { RegisService } from './share/regis.service';
     ListDetailComponent,
     ListRegisterComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SongComponent,
+    SongDetailComponent,
+    SongRegisterComponent,
+    RegeventComponent,
+    RegeventDetailComponent,
+    RegeventRegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgxQRCodeModule,
     RouterModule.forRoot([
@@ -39,6 +52,12 @@ import { RegisService } from './share/regis.service';
       { path: 'list/:id', component: ListDetailComponent },
       { path: 'register/:id', component: ListRegisterComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'song', component: SongComponent },
+      { path: 'song/:id', component: SongDetailComponent },
+      { path: 'songregister/:id', component: SongRegisterComponent },
+      { path: 'event', component: RegeventComponent },
+      { path: 'event/:id', component: RegeventDetailComponent },
+      { path: 'eventregister/:id', component: RegeventRegisterComponent },
       { path: '**', redirectTo: ''}
     ])
   ],

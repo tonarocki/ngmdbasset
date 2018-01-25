@@ -12,42 +12,55 @@
   <div class="col-lg-4">
     <section class="form-elegant">
         <div class="card">
+          <div class="card-header aqua-gradient  lighten-1 white-text">
 
+          </div>
             <div class="card-body mx-1">
     <form novalidate #registerForm="ngForm" (ngSubmit)="register(registerForm.value)"  >
+<div *ngIf="!regisNotMax" class="text-danger text-center" > เต็ม </div>
 
-       
         <div class="md-form">
-          <input #stdid="ngModel" class="form-control" ngModel name="stdid" type="text">
+          <input #stdid="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="stdid" type="text">
           <label for="stdid">รหัสนักศึกษา</label>
         </div>
 
         <div class="md-form">
-          <input #prefix="ngModel" class="form-control" ngModel name="prefix" type="text" >
+          <input #prefix="ngModel" class="form-control" [disabled]="!regisNotMax"  ngModel name="prefix" type="text" >
           <label for="prefix">นาย/นาง/นางสาว</label>
         </div>
 
         <div class="md-form">
-          <input #fname="ngModel" class="form-control" ngModel name="fname" type="text">
+          <input #fname="ngModel" class="form-control" [disabled]="!regisNotMax"  ngModel name="fname" type="text">
           <label for="fname">ชื่อ</label>
         </div>
 
         <div class="md-form">
-          <input #lname="ngModel" class="form-control" ngModel name="lname" type="text">
+          <input #lname="ngModel" class="form-control" [disabled]="!regisNotMax"  ngModel name="lname" type="text">
           <label for="lname">นามสกุล</label>
         </div>
 
         <div class="md-form">
-          <input #email="ngModel" class="form-control" ngModel name="email" type="text">
+          <input #email="ngModel" class="form-control" [disabled]="!regisNotMax"  ngModel name="email" type="text">
           <label for="email">อีเมลล์</label>
         </div>
         <div class="md-form">
-          <input #tel="ngModel" class="form-control" ngModel name="tel" type="text" >
+          <input #tel="ngModel" class="form-control" [disabled]="!regisNotMax"  ngModel name="tel" type="text" >
           <label for="tel">เบอร์โทรศัพท์</label>
         </div>
-        <button type="submit" class="btn aqua-gradient btn-sm" > บันทึก</button>
+<div class="md-form">
+        <select placeholder="เลือกคณะ" name="agc" class="form-control" [disabled]="!regisNotMax"  #agc="ngModel" ngModel>
+    <option *ngFor="let prf of agency" [ngValue]="prf.id">
+        {{ prf.agencyname }}
+    </option>
+</select>
 
-        <button type="reset" class="btn btn-outline-warning btn-sm" ng-click="clear(registerForm)" > กรอกใหม่</button>
+
+
+</div>
+
+        <button type="submit" *ngIf="regisNotMax"  class="btn aqua-gradient btn-sm" > ลงทะเบียน</button>
+
+        <button type="reset" *ngIf="regisNotMax" class="btn peach-gradient btn-sm" ng-click="clear(registerForm)" > กรอกใหม่</button>
 
       </form>
             </div>
@@ -60,19 +73,21 @@
             <thead>
                 <tr>
                   <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
+                  <th>รหัสนักศึกษา</th>
+                  <th>ชื่อ-สกุล</th>
+                  <th>คณะ</th>
+
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let list of registeruser">
-                  <th scope="row">{{list.id}}</th>
-                  <td>{{list.fname}}</td>
-                  <td>{{list.lname}}</td>
-                  <td> {{list.tel}} </td>
+                  <th scope="row"></th>
+                  <td>{{list.stdid}}</td>
+                  <td>{{list.prefix}}{{list.fname}} {{list.lname}}</td>
+                  <td>{{list.Agencies.agencyname}}</td>
+
                 </tr>
-               
+
               </tbody>
           </table>
     </div>

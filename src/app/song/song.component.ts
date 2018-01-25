@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
 import { RegisService } from '../share/regis.service';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-song',
+  templateUrl: './song.component.html',
+  styleUrls: ['./song.component.css']
 })
-export class ListComponent implements OnInit, OnDestroy {
+export class SongComponent implements OnInit, OnDestroy {
+
 isLoading = false;
 regislist: Array<any>;
 sub: any;
@@ -16,13 +16,13 @@ sub: any;
 
   ngOnInit() {
     this.isLoading = true;
-    this.sub = this.registerservice.getallByType(1).subscribe(
+    this.sub = this.registerservice.getallByType(2).subscribe(
       (regislist) => {
         console.log(regislist);
 
         this.regislist = regislist;
 
-     }, (err) => console.log(err),
+      }, (err) => console.log(err),
       () => this.isLoading = false
     );
 
@@ -33,3 +33,4 @@ sub: any;
   }
 
 }
+

@@ -28,7 +28,8 @@
         "./assets/js/jquery-3.2.1.min.js",
         "./assets/js/popper.min.js",
         "./assets/js/bootstrap.min.js",
-        "./assets/js/mdb.min.js"
+        "./assets/js/mdb.min.js",
+        "./assets/js/custom.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
