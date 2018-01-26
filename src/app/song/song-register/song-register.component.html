@@ -1,93 +1,150 @@
 <div class="row mt-5">
   <div class="container-fluid">
-      <div class="col-md-12 listweek-title">
-          <h2>ลงทะเบียนกิจกรรม {{ regisTitle }}</h2>
-          <h6>ราละเอียด {{ regisDetail }}</h6>
-
-      </div>
+    <div class="col-md-12 listweek-title">
+      <h2>ลงทะเบียนกิจกรรม {{ regisTitle }}</h2>
+      <h6>ราละเอียด {{ regisDetail }}</h6>
+      <a href="../assets/role.pdf" target="_blank">ดาวนโหลดเงื่อนไขและกติกาการแข่งขัน</a>
+    </div>
   </div>
 </div>
 
 <div class="row">
-<div class="col-lg-4">
-  <section class="form-elegant">
+  <div class="col-lg-4 mb-3">
+    <section class="form-elegant">
       <div class="card">
-
-          <div class="card-body mx-1">
-  <form novalidate #registerForm="ngForm" (ngSubmit)="register(registerForm.value)"  >
-
-
-      <div class="md-form">
-        <input #stdid="ngModel" class="form-control" ngModel name="stdid" type="text">
-        <label for="stdid">รหัสนักศึกษา</label>
-      </div>
-
-      <div class="md-form">
-        <input #prefix="ngModel" class="form-control" ngModel name="prefix" type="text" >
-        <label for="prefix">นาย/นาง/นางสาว</label>
-      </div>
-
-      <div class="md-form">
-        <input #fname="ngModel" class="form-control" ngModel name="fname" type="text">
-        <label for="fname">ชื่อ</label>
-      </div>
-
-      <div class="md-form">
-        <input #lname="ngModel" class="form-control" ngModel name="lname" type="text">
-        <label for="lname">นามสกุล</label>
-      </div>
-
-      <div class="md-form">
-        <input #email="ngModel" class="form-control" ngModel name="email" type="text">
-        <label for="email">อีเมลล์</label>
-      </div>
-      <div class="md-form">
-        <input #tel="ngModel" class="form-control" ngModel name="tel" type="text" >
-        <label for="tel">เบอร์โทรศัพท์</label>
-      </div>
-<div class="md-form">
-      <select placeholder="เลือกคณะ" name="agc" class="form-control" #agc="ngModel" ngModel>
-  <option *ngFor="let prf of agency" [ngValue]="prf.id">
-      {{ prf.agencyname }}
-  </option>
-</select>
+        <div class="card-header aqua-gradient  lighten-1 white-text"></div>
+        <div class="card-body mx-1">
+          <form novalidate #registerForm="ngForm" (ngSubmit)="registersong(registerForm.value)">
 
 
+            <div *ngIf="!regisNotMax" class="text-danger text-center"> เต็ม </div>
 
-</div>
+            <div class="md-form">
+              <input #stdid="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="stdid" type="text">
+              <label for="stdid">รหัสนักศึกษา</label>
+            </div>
 
-      <button type="submit" class="btn aqua-gradient btn-sm" > ลงทะเบียน</button>
+            <div class="md-form">
+              <input #prefix="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="prefix" type="text" required>
+              <label for="prefix">
+                <span class="text-danger">*</span>นาย/นาง/นางสาว</label>
+              <div [hidden]="prefix.valid || (prefix.pristine && prefix.untouched)" class="form-control-feedback alert alert-danger">
+                <div *ngIf="prefix.errors && prefix.hasError('required')">กรุณากรอกคำนำหน้า</div>
 
-      <button type="reset" class="btn peach-gradient btn-sm" ng-click="clear(registerForm)" > กรอกใหม่</button>
+              </div>
+            </div>
 
-    </form>
-          </div>
+            <div class="md-form">
+              <input #fname="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="fname" type="text" required>
+              <label for="fname">
+                <span class="text-danger">*</span>ชื่อ</label>
+              <div [hidden]="fname.valid || (fname.pristine && fname.untouched)" class="form-control-feedback alert alert-danger">
+                <div *ngIf="fname.errors && fname.hasError('required')">กรุณากรอกชื่อ</div>
+
+              </div>
+            </div>
+
+            <div class="md-form">
+              <input #lname="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="lname" type="text" required>
+              <label for="lname">
+                <span class="text-danger">*</span>นามสกุล</label>
+              <div [hidden]="lname.valid || (lname.pristine && lname.untouched)" class="form-control-feedback alert alert-danger">
+                <div *ngIf="lname.errors && lname.hasError('required')">กรุณากรอกนามสกุล</div>
+
+              </div>
+            </div>
+
+            <div class="md-form">
+              <span class="text-danger">*</span>กรุณาเลือกคณะ
+              <select placeholder="เลือกคณะ" name="agc" class="form-control" [disabled]="!regisNotMax" #agc="ngModel" ngModel required>
+                <option *ngFor="let prf of agency" [ngValue]="prf.id">
+                  {{ prf.agencyname }}
+                </option>
+              </select>
+              <div [hidden]="agc.valid || (agc.pristine && agc.untouched)" class="form-control-feedback alert alert-danger">
+                <div *ngIf="agc.errors && agc.hasError('required')">กรุณาเลือกคณะ</div>
+
+              </div>
+            </div>
+
+            <div class="md-form">
+              <input #songslow="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="songslow" type="text" required>
+              <label for="songslow">
+                <span class="text-danger">*</span>ชื่อเพลง(เพลงช้า)</label>
+              <div [hidden]="songslow.valid || (songslow.pristine && songslow.untouched)" class="form-control-feedback alert alert-danger">
+                <div *ngIf="songslow.errors && songslow.hasError('required')">กรุณากรอกชื่อเพลง</div>
+              </div>
+            </div>
+
+            <div class="md-form">
+              <input #artisslow="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="artisslow" type="text" required>
+              <label for="artisslow">
+                <span class="text-danger">*</span>ผู้ร้องต้นฉบับเพลง(เพลงช้า)</label>
+              <div [hidden]="artisslow.valid || (artisslow.pristine && artisslow.untouched)" class="form-control-feedback alert alert-danger">
+                <div *ngIf="artisslow.errors && artisslow.hasError('required')">กรุณากรอกผู้ร้องเพลงต้นฉบับ</div>
+              </div>
+            </div>
+
+            <div class="md-form">
+              <input #songfast="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="songfast" type="text" required>
+              <label for="songfast">
+                <span class="text-danger">*</span>ชื่อเพลง(เพลงเร็ว)</label>
+              <div [hidden]="songfast.valid || (songfast.pristine && songfast.untouched)" class="form-control-feedback alert alert-danger">
+                <div *ngIf="songfast.errors && songfast.hasError('required')">กรุณากรอกชื่อเพลง</div>
+              </div>
+            </div>
+
+            <div class="md-form">
+              <input #artistfast="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="artistfast" type="text" required>
+              <label for="artistfast">
+                <span class="text-danger">*</span>ผู้ร้องต้นฉบับเพลง(เพลงเร็ว)</label>
+              <div [hidden]="artistfast.valid || (artistfast.pristine && artistfast.untouched)" class="form-control-feedback alert alert-danger">
+                <div *ngIf="artistfast.errors && artistfast.hasError('required')">กรุณากรอกผู้ร้องเพลงต้นฉบับ</div>
+              </div>
+            </div>
+
+            <div class="md-form">
+              <input #email="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="email" type="text">
+              <label for="email">อีเมลล์</label>
+            </div>
+            <div class="md-form">
+              <input #tel="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel ng-value="registerForm.tel" name="tel" type="text">
+              <label for="tel">เบอร์โทรศัพท์</label>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" *ngIf="regisNotMax" [disabled]="registerForm.invalid" class="btn aqua-gradient btn-sm waves-effect">
+              ลงทะเบียน</button>
+
+              <button type="reset" *ngIf="regisNotMax" class="btn peach-gradient btn-sm waves-effect" ng-click="clear(registerForm)"> กรอกใหม่</button>
+            </div>
+
+          </form>
+        </div>
       </div>
     </section>
   </div>
 
   <div class="col-lg-8">
-      <table class="table table-sm">
-          <thead>
-              <tr>
-                <th>#</th>
-                <th>รหัสนักศึกษา</th>
-                <th>ชื่อ-สกุล</th>
-                <th>คณะ</th>
+    <div class="card card-body">
 
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let list of registeruser">
-                <th scope="row"></th>
-                <td>{{list.stdid}}</td>
-                <td>{{list.prefix}}{{list.fname}} {{list.lname}}</td>
-                <td>{{list.Agencies.agencyname}}</td>
+      <div *ngIf="isLoading" class="row text-center ">
+        <div class="col-lg-12 col-md-12 text-center">
+          <img src="../assets/img/Preloader_2.gif" width="64">
+        </div>
+      </div>
 
-              </tr>
+      <h5 class="card-title text-center ">ชื่อ-สกุล / เพลง</h5>
+      <div class="row linetop" *ngFor="let list of registeruser.reverse(); index as i">
+        <div class="col-md-4 col-lg-4 ml-1">{{i+1}} {{list.prefix}}{{list.fname}} {{list.lname}} </div>
+        <div class="col-md-6 col-lg-6 ">คณะ: {{list.Agencies.agencyname}}
+            <br/>เพลงช้า: {{list.songslow}}/{{list.artisslow}}
+          <br/>เพลงเร็ว: {{list.songfast}}/{{list.artistfast}}</div>
+      </div>
 
-            </tbody>
-        </table>
+
+    </div>
   </div>
+
 
 </div>

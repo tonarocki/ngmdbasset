@@ -1,3 +1,31 @@
-<p>
-  song-detail works!
-</p>
+<div class="row mt-5">
+    <div class="container-fluid">
+      <div class="col-md-12 listweek-title">
+        <h2>รายชื่อผู้ลงทะเบียน {{ regisTitle }}</h2>
+      </div>
+    </div>
+  </div>
+
+
+<div class="row">
+<div class="col-lg-12 col-md-12" >
+    <div class="card card-body">
+
+        <div *ngIf="isLoading" class="row text-center ">
+          <div class="col-lg-12 col-md-12 text-center">
+              <img src="../assets/img/Preloader_2.gif" width="64">
+
+          </div>
+        </div>
+
+        <h5 class="card-title text-center ">ชื่อ-สกุล / เพลง</h5>
+        <div class="row linetop" *ngFor="let list of registeruser.reverse(); index as i">
+          <div class="col-md-4 col-lg-4 ml-1">{{i+1}} {{list.prefix}}{{list.fname}} {{list.lname}} </div>
+          <div class="col-md-6 col-lg-6 ">คณะ: {{list.Agencies.agencyname}}
+              <br/>เพลงช้า: {{list.songslow}}/{{list.artisslow}}
+            <br/>เพลงเร็ว: {{list.songfast}}/{{list.artistfast}}</div>
+        </div>
+
+
+      </div>
+  </div></div>

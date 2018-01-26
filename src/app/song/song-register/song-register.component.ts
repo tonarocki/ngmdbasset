@@ -1,7 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { ParamMap, Router, ActivatedRoute, RoutesRecognized } from '@angular/router';
-import { OnDestroy, AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import {
+  ParamMap,
+  Router,
+  ActivatedRoute,
+  RoutesRecognized
+} from '@angular/router';
+import {
+  OnDestroy,
+  AfterViewInit
+} from '@angular/core/src/metadata/lifecycle_hooks';
 import { RegisService } from '../../share/regis.service';
 
 import { Regisdetail } from '../../share/regdetail.model';
@@ -11,19 +19,24 @@ import { Regisdetail } from '../../share/regdetail.model';
   templateUrl: './song-register.component.html',
   styleUrls: ['./song-register.component.css']
 })
-export class SongRegisterComponent implements OnInit , OnDestroy {
-
+export class SongRegisterComponent implements OnInit, OnDestroy {
   private sub: any = null;
   private subagc: any = null;
   param: any;
   regislistid: any;
+  regisNotMax: boolean;
   regisTitle: String;
   regisDetail: String;
   registeruser: any;
   agency: any;
   Regdetail: Regisdetail;
+  isLoading = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private registerservice: RegisService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private registerservice: RegisService
+  ) {
     this.param = this.route.snapshot.params.id;
   }
 
@@ -31,7 +44,7 @@ export class SongRegisterComponent implements OnInit , OnDestroy {
     registerForm = {};
   }
 
-  register(formValue): void {
+  registersong(formValue): void {
     const stdid = formValue.stdid;
     const prefix = formValue.prefix;
     const fname = formValue.fname;
@@ -39,38 +52,53 @@ export class SongRegisterComponent implements OnInit , OnDestroy {
     const email = formValue.email;
     const tel = formValue.tel;
     const agencyid = formValue.agc;
-    this.registerservice.register(stdid, prefix, fname, lname, email, tel, agencyid, this.param).subscribe(
-      (regdetail) => {
-        console.log(regdetail);
-         this.Regdetail = regdetail;
-         if (this.Regdetail.id) {
-           alert('บันทึกข้อมูลเรียบร้อยแล้ว ' + this.Regdetail.id);
-           this.list();
-         }
-      },
-      (error) => {
-
-        console.log(error);
-
-      }
-    );
- }
-
-
-
-  ngOnInit() {
-  this.getagency();
-  this.list();
+    const songfast = formValue.songfast;
+    const artistfast = formValue.artistfast;
+    const songslow = formValue.songslow;
+    const artisslow = formValue.artisslow;
+    this.registerservice
+      .registersong(
+        stdid,
+        prefix,
+        fname,
+        lname,
+        email,
+        tel,
+        agencyid,
+        this.param,
+        songfast,
+        artistfast,
+        songslow,
+        artisslow
+      )
+      .subscribe(
+        regdetail => {
+          console.log(regdetail);
+          this.Regdetail = regdetail;
+          if (this.Regdetail.id) {
+            alert('บันทึกข้อมูลเรียบร้อยแล้ว ' + this.Regdetail.id);
+            this.list();
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
+  ngOnInit() {
+    this.getagency();
+    this.list();
+  }
 
   getagency() {
-this.subagc = this.registerservice.getagency().subscribe(
-      (agency) => {
+    this.subagc = this.registerservice.getagency().subscribe(
+      agency => {
         console.log(agency);
 
         this.agency = agency;
-      }, (err) => {
+      },
+      err => {
         console.log(err);
         this.router.navigate(['/home']);
       }
@@ -78,9 +106,16 @@ this.subagc = this.registerservice.getagency().subscribe(
   }
 
   list() {
+    this.isLoading = true;
     this.sub = this.registerservice.getregisbyid(this.param).subscribe(
-      (regislistid) => {
+      regislistid => {
         console.log(regislistid);
+
+        if (regislistid.RegisDetails.length < regislistid.max) {
+          this.regisNotMax = true;
+        } else {
+          this.regisNotMax = false;
+        }
 
         if (regislistid.type !== 2 || regislistid.status !== 1) {
           this.router.navigate(['/song']);
@@ -90,19 +125,21 @@ this.subagc = this.registerservice.getagency().subscribe(
         this.regisDetail = regislistid.detail;
 
         this.registeruser = regislistid.RegisDetails;
-      }, (err) => {
+      },
+      err => {
         console.log(err);
         this.router.navigate(['/song']);
-      }
+      },
+      () => this.isLoading = false
     );
   }
 
   ngOnDestroy() {
     if (this.sub != null) {
-        this.sub.unsubscribe();
+      this.sub.unsubscribe();
     }
     if (this.subagc != null) {
-        this.subagc.unsubscribe();
+      this.subagc.unsubscribe();
     }
   }
 }

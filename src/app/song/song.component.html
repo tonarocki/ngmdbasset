@@ -2,7 +2,23 @@
     <div class="container-fluid">
         <div class="col-md-12 listweek-title">
             <h2>กิจกรรมประกวดร้องเพลง (งานสัปดาห์ห้องสมุด)</h2>
-
+<p class="text-left">
+    <strong>วันเวลาที่ใช้ในการประกวด</strong><br/>
+    -วันพุธที่ 7 กุมภาพันธ์ 2561<br/>
+    -เริ่มแข่งขันเวลา 13.00 น. - 16.00 น.ใช้เวลาในการแข่งขัน 3 ชั่วโมง<br/>
+    -วันพฤหัสบดีที่ 8 กุมภาพันธ์ 2561<br/>
+    -เริ่มแข่งขันเวลา 09.00 น. - 12.00 น. และ 13.00 น. - 16.30 น. ใช้เวลาในการแข่งขัน 6 ชั่วโมง
+</p>
+            <p class="text-left" ><strong>รายละเอียด</strong><br/>- เป็นนักศึกษา เพศชาย – หญิง<br/>
+              - เป็นบุคลากรภายในมหาวิทยาลัย เพศชาย – หญิง<br/> - แต่งกายด้วยชุดสุภาพ หรือชุดนักร้องที่สอดคล้องกับแนวเพลงที่ร้องประกวด<br/>
+                - เพลงที่ใช้ในการประกวด 2 บทเพลง เป็นเพลงเร็ว 1 เพลง เพลงช้า 1 เพลง<br/>
+                - ผู้เข้าประกวดจะต้องร้องเพลงลูกทุ่งเป็นเพลงบังคับ 1 เพลง (เพลงช้าหรือเพลงเร็วอย่างใดอย่าง
+                หนึ่ง)<br/>
+                - ให้ผู้เข้าประกวดระบุชื่อเพลง และชื่อนักร้องต้นฉบับที่ใช้ในการประกวดด้วย<br/>
+                - ผู้เข้าประกวดที่ต้องการนำเพลงมาเองให้นำมาส่งที่สำนักวิทยบริการหรือศูนย์ภาษาและ
+                คอมพิวเตอร์ ชั้น 1 ห้องบริการคอมพิวเตอร์ ภายในวันที่ 6 กุมภาพันธ์ 2561<br/>
+                - สอบถามรายละเอียดเพิ่มเติมได้ที่ สำนักวิทยบริการ ชั้น 1 และอาคาร 11 ชั้น 1 ห้องบริการคอมพิวเตอร์</p>
+            <a href="../assets/role.pdf" target="_blank">ดาวน์โหลดเงื่อนไขและกติกาการแข่งขัน</a>
         </div>
     </div>
 </div>
@@ -23,7 +39,7 @@
                         <ngx-qrcode qrc-element-type="url" qrc-value="http://libraryweek.snru.ac.th/songregister/{{list.id}}" qrc-version="4"></ngx-qrcode>
                     <h4 class="card-title">{{list.title}}</h4>
                     <p class="card-text">{{list.detail}}</p>
-                    <a *ngIf="list.max > list.RegisDetails.length && list.status === 1 " [routerLink]="['/songregister', list.id]" class="btn aqua-gradient btn-rounded btn-sm waves-effect">ลงทะเบียน</a> <a [routerLink]="['/list', list.id]" >รายชื่อ({{list.RegisDetails.length}}/{{list.max}})</a>
+                    <a *ngIf="list.max > list.RegisDetails.length && list.status === 1 " [routerLink]="['/songregister', list.id]" class="btn aqua-gradient btn-rounded btn-sm waves-effect">ลงทะเบียน</a> <a [routerLink]="['/song', list.id]" >รายชื่อ({{list.RegisDetails.length}}/{{list.max}})</a>
                 </div>
                 <div class="card-footer text-muted ">
                     <span>วันที่จัดกิจกรรม: {{list.date | date:'dd/MM/yyyy' }}  เวลา {{list.timestart}} น. ถึง {{list.timeend}} น.  </span>

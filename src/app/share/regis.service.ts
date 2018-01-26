@@ -50,6 +50,44 @@ export class RegisService {
       });
   }
 
+  registersong(
+    stdid: string,
+    prefix: string,
+    fname: string,
+    lname: string,
+    email: string,
+    tel: string,
+    agencyid: string,
+    regisid: string,
+    songfast: string,
+    artistfast: string,
+    songslow: string,
+    artisslow: string,
+  ): Observable<Regisdetail> {
+    const header = { 'Content-Type': 'application/json'};
+
+    const body = {
+      stdid: stdid,
+      prefix: prefix,
+      fname: fname,
+      lname: lname,
+      email: email,
+      tel: tel,
+      agencyId: agencyid,
+      songfast: songfast,
+      artistfast: artistfast,
+      songslow: songslow,
+      artisslow: artisslow,
+    };
+
+    return this.http
+      .post<Regisdetail>(this.urlregisall + '/' + regisid + '/detail', body, {
+        headers: header
+      })
+      .catch((errorResponse: HttpErrorResponse) => {
+        return Observable.throw(errorResponse);
+      });
+  }
 
   getregisall(): Observable<any> {
     return this.http

@@ -26,29 +26,44 @@
 
             <div class="md-form">
               <input #prefix="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="prefix" type="text" required>
-              <label for="prefix">*นาย/นาง/นางสาว</label>
+              <label for="prefix"><span class="text-danger">*</span>นาย/นาง/นางสาว</label>
               <div [hidden]="prefix.valid || (prefix.pristine && prefix.untouched)" class="form-control-feedback alert alert-danger">
                   <div *ngIf="prefix.errors && prefix.hasError('required')">กรุณากรอกคำนำหน้า</div>
-                
+
               </div>
             </div>
 
             <div class="md-form">
               <input #fname="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="fname" type="text" required>
-              <label for="fname">*ชื่อ</label>
+              <label for="fname"><span class="text-danger">*</span>ชื่อ</label>
               <div [hidden]="fname.valid || (fname.pristine && fname.untouched)" class="form-control-feedback alert alert-danger">
                   <div *ngIf="fname.errors && fname.hasError('required')">กรุณากรอกชื่อ</div>
-                
+
               </div>
             </div>
 
             <div class="md-form">
               <input #lname="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="lname" type="text" required>
-              <label for="lname">*นามสกุล</label>
+              <label for="lname"><span class="text-danger">*</span>นามสกุล</label>
               <div [hidden]="lname.valid || (lname.pristine && lname.untouched)" class="form-control-feedback alert alert-danger">
                   <div *ngIf="lname.errors && lname.hasError('required')">กรุณากรอกนามสกุล</div>
-                
+
               </div>
+            </div>
+
+            <div class="md-form">
+              <span class="text-danger">*</span>กรุณาเลือกคณะ
+              <select placeholder="เลือกคณะ" name="agc" class="form-control" [disabled]="!regisNotMax" #agc="ngModel" ngModel required>
+                <option *ngFor="let prf of agency" [ngValue]="prf.id">
+                  {{ prf.agencyname }}
+                </option>
+              </select>
+              <div [hidden]="agc.valid || (agc.pristine && agc.untouched)" class="form-control-feedback alert alert-danger">
+                  <div *ngIf="agc.errors && agc.hasError('required')">กรุณาเลือกคณะ</div>
+
+              </div>
+
+
             </div>
 
             <div class="md-form">
@@ -59,24 +74,11 @@
               <input #tel="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel ng-value="registerForm.tel" name="tel" type="text">
               <label for="tel">เบอร์โทรศัพท์</label>
             </div>
-            <div class="md-form">
-                *กรุณาเลือกคณะ
-              <select placeholder="เลือกคณะ" name="agc" class="form-control" [disabled]="!regisNotMax" #agc="ngModel" ngModel required>
-                <option *ngFor="let prf of agency" [ngValue]="prf.id">
-                  {{ prf.agencyname }}
-                </option>
-              </select>
-              <div [hidden]="agc.valid || (agc.pristine && agc.untouched)" class="form-control-feedback alert alert-danger">
-                  <div *ngIf="agc.errors && agc.hasError('required')">กรุณาเลือกคณะ</div>
-                
-              </div>
 
-
-            </div>
             <div class="text-center">
-              <button type="submit" *ngIf="regisNotMax" [disabled]="registerForm.invalid"  class="btn aqua-gradient btn-sm"> ลงทะเบียน</button>
+              <button type="submit" *ngIf="regisNotMax" [disabled]="registerForm.invalid"  class="btn aqua-gradient btn-sm waves-effect"> ลงทะเบียน</button>
 
-              <button type="reset" *ngIf="regisNotMax" class="btn peach-gradient btn-sm" ng-click="clear(registerForm)"> กรอกใหม่</button>
+              <button type="reset" *ngIf="regisNotMax" class="btn peach-gradient btn-sm waves-effect" ng-click="clear(registerForm)"> กรอกใหม่</button>
             </div>
           </form>
         </div>
@@ -91,14 +93,13 @@
         <thead>
           <tr>
             <th>#</th>
-
             <th>ชื่อ-สกุล</th>
             <th>คณะ</th>
 
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let list of registeruser; index as i">
+          <tr *ngFor="let list of registeruser.reverse(); index as i">
             <td> {{i+1}} </td>
 
             <td>{{list.prefix}}{{list.fname}} {{list.lname}}</td>

@@ -28,3 +28,7 @@
 
   border-radius: 5px;
 }
+
+.btn.disabled, .btn:disabled {
+  opacity: .25;
+}

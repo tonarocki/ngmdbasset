@@ -1,3 +1,35 @@
-<p>
-  list-detail works!
-</p>
+
+<div class="row mt-5">
+    <div class="container-fluid">
+      <div class="col-md-12 listweek-title">
+        <h2>รายชื่อผู้ลงทะเบียน {{ regisTitle }}</h2>
+      </div>
+    </div>
+  </div>
+
+
+<div class="row">
+<div class="col-lg-12 col-md-12" >
+    <div class="card">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ชื่อ-สกุล</th>
+            <th>คณะ</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of registeruser; index as i">
+            <td> {{i+1}} </td>
+
+            <td>{{list.prefix}}{{list.fname}} {{list.lname}}</td>
+            <td>{{list.Agencies.agencyname}}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div></div>

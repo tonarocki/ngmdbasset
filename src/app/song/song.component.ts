@@ -11,6 +11,7 @@ export class SongComponent implements OnInit, OnDestroy {
 
 isLoading = false;
 regislist: Array<any>;
+regdetail: string;
 sub: any;
   constructor(private registerservice: RegisService) { }
 
@@ -21,7 +22,7 @@ sub: any;
         console.log(regislist);
 
         this.regislist = regislist;
-
+this.regdetail = regislist.detail;
       }, (err) => console.log(err),
       () => this.isLoading = false
     );

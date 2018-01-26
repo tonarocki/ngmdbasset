@@ -8,4 +8,8 @@ export interface Regisdetail {
   tel: string;
   agencyId: string;
   regisId: string;
+  songfast: string;
+  artistfast: string;
+  songslow: string;
+  artisslow: string;
 }
