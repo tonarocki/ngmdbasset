@@ -19,8 +19,7 @@ import { SongComponent } from './song/song.component';
 import { SongDetailComponent } from './song/song-detail/song-detail.component';
 import { SongRegisterComponent } from './song/song-register/song-register.component';
 import { RegeventComponent } from './regevent/regevent.component';
-import { RegeventDetailComponent } from './regevent/regevent-detail/regevent-detail.component';
-import { RegeventRegisterComponent } from './regevent/regevent-register/regevent-register.component';
+import { RandomComponent } from './random/random.component';
 
 
 @NgModule({
@@ -37,8 +36,7 @@ import { RegeventRegisterComponent } from './regevent/regevent-register/regevent
     SongDetailComponent,
     SongRegisterComponent,
     RegeventComponent,
-    RegeventDetailComponent,
-    RegeventRegisterComponent
+    RandomComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +54,7 @@ import { RegeventRegisterComponent } from './regevent/regevent-register/regevent
       { path: 'song/:id', component: SongDetailComponent },
       { path: 'songregister/:id', component: SongRegisterComponent },
       { path: 'event', component: RegeventComponent },
-      { path: 'event/:id', component: RegeventDetailComponent },
-      { path: 'eventregister/:id', component: RegeventRegisterComponent },
+      { path: 'random', component: RandomComponent },
       { path: '**', redirectTo: ''}
     ])
   ],

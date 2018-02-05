@@ -99,7 +99,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let list of registeruser.reverse(); index as i">
+          <tr *ngFor="let list of registeruser; index as i">
             <td> {{i+1}} </td>
 
             <td>{{list.prefix}}{{list.fname}} {{list.lname}}</td>

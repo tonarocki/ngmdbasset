@@ -135,7 +135,7 @@
       </div>
 
       <h5 class="card-title text-center ">ชื่อ-สกุล / เพลง</h5>
-      <div class="row linetop" *ngFor="let list of registeruser.reverse(); index as i">
+      <div class="row linetop" *ngFor="let list of registeruser; index as i">
         <div class="col-md-4 col-lg-4 ml-1">{{i+1}} {{list.prefix}}{{list.fname}} {{list.lname}} </div>
         <div class="col-md-6 col-lg-6 ">คณะ: {{list.Agencies.agencyname}}
             <br/>เพลงช้า: {{list.songslow}}/{{list.artisslow}}

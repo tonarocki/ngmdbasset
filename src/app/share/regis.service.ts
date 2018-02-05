@@ -10,7 +10,7 @@ import 'rxjs/add/observable/throw';
 export class RegisService {
   urlregisall = 'http://cmm.snru.ac.th:8000/api/regis';
   urlagency = 'http://cmm.snru.ac.th:8000/api/agency';
-
+  urldetailall = 'http://cmm.snru.ac.th:8000/api/regis/1/detail';
   urltype = 'http://cmm.snru.ac.th:8000/api/type';
   urlbookhand = 'http://cmm.snru.ac.th:8000/api/type/1';
   urlsongall = 'http://cmm.snru.ac.th:8000/api/type/2';
@@ -128,4 +128,13 @@ export class RegisService {
         return Observable.throw(errorResponse);
       });
   }
+
+  getDetailall(): Observable<any> {
+    return this.http
+      .get<any>(this.urldetailall)
+      .catch((errorResponse: HttpErrorResponse) => {
+        return Observable.throw(errorResponse);
+      });
+  }
+
 }

@@ -1,0 +1,143 @@
+.listweek-title {
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 3em 0;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #E4EAEC;
+  }
+  
+  .card-header {
+    padding: .1rem 1.25rem;
+  }
+  .waves-effect {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 1;
+  }
+  .btn {
+    font-size: .9rem;
+  }
+  
+  .form-control{
+  
+    border-radius: 5px;
+  }
+  
+  .btn.disabled, .btn:disabled {
+    opacity: .25;
+  }
+
+  
+  .spiralContainer {
+    
+    
+    -webkit-animation: spin 3s linear 0s infinite reverse;
+    -moz-animation: spin 3s linear 0s infinite reverse;  
+    -ms-animation: spin 3s linear 0s infinite reverse;
+    -o-animation: spin 3s linear 0s infinite reverse;
+    animation: spin 3s linear 0s infinite reverse;
+    
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -ms-animation-play-state: paused;
+    -o-animation-play-state: paused;  
+    animation-play-state: paused;
+  }
+  .spiral {
+    
+    
+    -webkit-animation: spin 1s linear 0s infinite normal;
+    -moz-animation: spin 1s linear 0s infinite normal;
+    -ms-animation: spin 1s linear 0s infinite normal;
+    -o-animation: spin 1s linear 0s infinite normal;
+    animation: spin 1s linear 0s infinite normal;
+  }
+  .spiralContainer:hover {
+    -webkit-animation-play-state: running;
+    -moz-animation-play-state: running;
+    -ms-animation-play-state: running;
+    -o-animation-play-state: running;
+    animation-play-state: running;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+  }
+  @-webkit-keyframes spin {
+    0% {-webkit-transform: rotate(0deg); }
+    50% {-webkit-transform: rotate(10deg); }
+    100% { -webkit-transform: rotate(0deg); }
+  }
+  @-ms-keyframes spin {
+    0% {-ms-transform: rotate(0deg); }
+    50% {-ms-transform: rotate(10deg); }
+    100% { -ms-transform: rotate(0deg); }
+  }
+  @-moz-keyframes spin {
+    0% { -moz-transform: rotate(0deg); }
+    50% {-moz-transform: rotate(10deg); }
+    100% { -moz-transform: rotate(0deg); }
+  }
+  @-o-keyframes spin {
+    0% { -o-transform: rotate(0deg); }
+    50% { -o-transform: rotate(10deg); }
+    100% { -o-transform: rotate(0deg); }
+  }
+
+  .spiralContainerx {
+    
+    
+    -webkit-animation: spin 3s linear 0s infinite reverse;
+    -moz-animation: spin 3s linear 0s infinite reverse;  
+    -ms-animation: spin 3s linear 0s infinite reverse;
+    -o-animation: spin 3s linear 0s infinite reverse;
+    animation: spin 3s linear 0s infinite reverse;
+    
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -ms-animation-play-state: paused;
+    -o-animation-play-state: paused;  
+    animation-play-state: paused;
+  }
+  .spiralx {
+    
+    
+    -webkit-animation: spinx 1s linear 0s 2 normal;
+    -moz-animation: spinx 1s linear 0s 2 normal;
+    -ms-animation: spinx 1s linear 0s 2 normal;
+    -o-animation: spinx 1s linear 0s 2 normal;
+    animation: spinx 1s linear 0s 2 normal;
+  }
+  
+  @keyframes spinx {
+    0% { transform: scale(1); }
+    50% { transform: scale(.8); }
+    100% { transform: scale(1); }
+  }
+  @-webkit-keyframes spinx {
+    0% {-webkit-transform: scale(1); }
+    50% {-webkit-transform: scale(.8); }
+    100% { -webkit-transform: scale(1); }
+  }
+  @-ms-keyframes spinx {
+    0% {-ms-transform: scale(1); }
+    50% {-ms-transform: scale(.8); }
+    100% { -ms-transform: scale(1); }
+  }
+  @-moz-keyframes spinx {
+    0% { -moz-transform: scale(1); }
+    50% {-moz-transform: scale(.8); }
+    100% { -moz-transform: v(1); }
+  }
+  @-o-keyframes spinx {
+    0% { -o-transform: scale(1); }
+    50% { -o-transform: scale(.8); }
+    100% { -o-transform: scale(1); }
+  }
