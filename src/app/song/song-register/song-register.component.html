@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <div class="col-md-12 listweek-title">
       <h2>ลงทะเบียนกิจกรรม {{ regisTitle }}</h2>
-      <h6>ราละเอียด {{ regisDetail }}</h6>
-      <a href="../assets/role.pdf" target="_blank">ดาวนโหลดเงื่อนไขและกติกาการแข่งขัน</a>
+
+
     </div>
   </div>
 </div>
@@ -70,38 +70,13 @@
             <div class="md-form">
               <input #songslow="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="songslow" type="text" required>
               <label for="songslow">
-                <span class="text-danger">*</span>ชื่อเพลง(เพลงช้า)</label>
+                <span class="text-danger">*</span>ชื่อทีมที่ใช้ในการแข่งขัน</label>
               <div [hidden]="songslow.valid || (songslow.pristine && songslow.untouched)" class="form-control-feedback alert alert-danger">
                 <div *ngIf="songslow.errors && songslow.hasError('required')">กรุณากรอกชื่อเพลง</div>
               </div>
             </div>
 
-            <div class="md-form">
-              <input #artisslow="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="artisslow" type="text" required>
-              <label for="artisslow">
-                <span class="text-danger">*</span>ผู้ร้องต้นฉบับเพลง(เพลงช้า)</label>
-              <div [hidden]="artisslow.valid || (artisslow.pristine && artisslow.untouched)" class="form-control-feedback alert alert-danger">
-                <div *ngIf="artisslow.errors && artisslow.hasError('required')">กรุณากรอกผู้ร้องเพลงต้นฉบับ</div>
-              </div>
-            </div>
 
-            <div class="md-form">
-              <input #songfast="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="songfast" type="text" required>
-              <label for="songfast">
-                <span class="text-danger">*</span>ชื่อเพลง(เพลงเร็ว)</label>
-              <div [hidden]="songfast.valid || (songfast.pristine && songfast.untouched)" class="form-control-feedback alert alert-danger">
-                <div *ngIf="songfast.errors && songfast.hasError('required')">กรุณากรอกชื่อเพลง</div>
-              </div>
-            </div>
-
-            <div class="md-form">
-              <input #artistfast="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="artistfast" type="text" required>
-              <label for="artistfast">
-                <span class="text-danger">*</span>ผู้ร้องต้นฉบับเพลง(เพลงเร็ว)</label>
-              <div [hidden]="artistfast.valid || (artistfast.pristine && artistfast.untouched)" class="form-control-feedback alert alert-danger">
-                <div *ngIf="artistfast.errors && artistfast.hasError('required')">กรุณากรอกผู้ร้องเพลงต้นฉบับ</div>
-              </div>
-            </div>
 
             <div class="md-form">
               <input #email="ngModel" class="form-control" [disabled]="!regisNotMax" ngModel name="email" type="text">
@@ -134,12 +109,11 @@
         </div>
       </div>
 
-      <h5 class="card-title text-center ">ชื่อ-สกุล / เพลง</h5>
+      <h5 class="card-title text-center ">ชื่อ-สกุล / ทีม</h5>
       <div class="row linetop" *ngFor="let list of registeruser; index as i">
         <div class="col-md-4 col-lg-4 ml-1">{{i+1}} {{list.prefix}}{{list.fname}} {{list.lname}} </div>
         <div class="col-md-6 col-lg-6 ">คณะ: {{list.Agencies.agencyname}}
-            <br/>เพลงช้า: {{list.songslow}}/{{list.artisslow}}
-          <br/>เพลงเร็ว: {{list.songfast}}/{{list.artistfast}}</div>
+            <br/>ชื่อทีม: {{list.songslow}}
       </div>
 
 

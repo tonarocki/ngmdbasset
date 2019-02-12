@@ -76,7 +76,7 @@ export class SongRegisterComponent implements OnInit, OnDestroy {
           console.log(regdetail);
           this.Regdetail = regdetail;
           if (this.Regdetail.id) {
-            alert('บันทึกข้อมูลเรียบร้อยแล้ว ' + this.Regdetail.id);
+            alert('บันทึกข้อมูลเรียบร้อยแล้ว ');
             this.list();
           }
         },

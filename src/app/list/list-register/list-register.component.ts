@@ -61,7 +61,7 @@ export class ListRegisterComponent implements OnInit, OnDestroy {
           console.log(regdetail);
           this.Regdetail = regdetail;
           if (this.Regdetail.id) {
-            alert('บันทึกข้อมูล คุณ ' + this.Regdetail.fname + ' เรียบร้อยแล้ว ' + this.Regdetail.id);
+            alert('บันทึกข้อมูล คุณ ' + this.Regdetail.fname + ' เรียบร้อยแล้ว ' );
             this.list();
           }
         },
