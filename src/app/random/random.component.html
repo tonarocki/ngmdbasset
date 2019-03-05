@@ -12,10 +12,10 @@
     <div class=" col-lg-12 col-md-12 text-center" >
   <div *ngIf="loading" class="text-center">
       <div class='spiralContainer'><div class='spiral'> <img src="./assets/img/cookie.png" width="210px" /></div></div>
-     
+
   </div>
   <div *ngIf="show">
-      <div class='spiralContainerx'><div class='spiralx'> 
+      <div class='spiralContainerx'><div class='spiralx'>
         ผู้โชคดีคือ
     <h2>{{ name.prefix + name.fname + ' ' + name.lname }}</h2>
     รหัสนักศึกษา {{ name.stdid }} <br/>
@@ -25,5 +25,9 @@
   <div *ngIf="showbtn" class="text-center">
     <a class="btn aqua-gradient btn-sm waves-effect" (click)="randomname()">จับรางวัล</a>
   </div>
+  <br/>
+  <div class="col-md-12 text-center" >
+    <img src="./assets/img/gift.png" class="img-fluid" width="400" alt="Responsive image">
+                </div>
 </div>
 </div>

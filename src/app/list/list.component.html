@@ -21,7 +21,7 @@
 
                 </div>
                 <div class="card-body">
-                        <ngx-qrcode qrc-element-type="url" qrc-value="http://libraryweek.snru.ac.th/register/{{list.id}}" qrc-version="3"></ngx-qrcode>
+                        <ngx-qrcode qrc-element-type="url" qrc-value="http://exhibition.snru.ac.th/register/{{list.id}}" qrc-version="3"></ngx-qrcode>
                     <h4 class="card-title">{{list.title}}</h4>
                     <p class="card-text">{{list.detail}}</p>
                     <a *ngIf="list.max > list.RegisDetails.length && list.status === 1 " [routerLink]="['/register', list.id]" class="btn aqua-gradient btn-rounded btn-sm waves-effect">ลงทะเบียน</a> <a [routerLink]="['/list', list.id]" >รายชื่อ({{list.RegisDetails.length}}/{{list.max}})</a>
